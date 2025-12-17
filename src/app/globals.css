@@ -183,3 +183,133 @@ body {
 .note-item-preview {
   margin-left: 8px;
 }
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+
+/* Mobile sidebar overlay */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 40;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Mobile sidebar slide-in */
+.mobile-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 50;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+
+.mobile-sidebar.open {
+  transform: translateX(0);
+}
+
+/* Hamburger button */
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 30;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--sidebar-bg);
+  border: 1px solid var(--border-color);
+  color: var(--foreground);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: var(--sidebar-hover);
+}
+
+/* Mobile close button in sidebar */
+.mobile-close-btn {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 8px;
+  border-radius: 8px;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  z-index: 60;
+}
+
+.mobile-close-btn:hover {
+  background: var(--sidebar-hover);
+  color: var(--foreground);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Desktop sidebar hidden on mobile */
+  .desktop-sidebar {
+    display: none;
+  }
+
+  /* Mobile sidebar visible */
+  .mobile-sidebar {
+    width: 85vw;
+    max-width: 340px;
+  }
+
+  /* Adjust note editor padding */
+  .note-editor-mobile {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Add top padding for hamburger menu */
+  .note-editor-mobile-header {
+    padding-top: 64px !important;
+  }
+
+  .prose {
+    font-size: 15px;
+  }
+
+  .prose h1 {
+    font-size: 24px;
+  }
+
+  .prose h2 {
+    font-size: 18px;
+  }
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .note-editor-content {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}

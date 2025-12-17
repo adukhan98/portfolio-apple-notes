@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { Post } from '@/lib/posts';
@@ -14,9 +14,12 @@ export function NoteEditor({ posts }: NoteEditorProps) {
     const searchParams = useSearchParams();
     const currentNoteSlug = searchParams.get('note');
 
-    const activePost = currentNoteSlug
-        ? posts.find(p => p.slug === currentNoteSlug)
-        : posts[0];
+    // Memoize activePost lookup to prevent re-finding on every render
+    const activePost = useMemo(() => {
+        return currentNoteSlug
+            ? posts.find(p => p.slug === currentNoteSlug)
+            : posts[0];
+    }, [currentNoteSlug, posts]);
 
     const [formattedDate, setFormattedDate] = React.useState('');
 
@@ -48,13 +51,13 @@ export function NoteEditor({ posts }: NoteEditorProps) {
     return (
         <div className="flex-1 h-screen flex flex-col" style={{ backgroundColor: 'var(--background)' }}>
             {/* Date header - Apple Notes style */}
-            <div className="pt-6 pb-4 px-16 text-center text-[13px] font-medium"
+            <div className="note-editor-mobile-header pt-6 pb-4 px-4 md:px-16 text-center text-[13px] font-medium"
                 style={{ color: 'var(--text-secondary)' }}>
                 {formattedDate || '\u00A0'}
             </div>
 
             {/* Content area */}
-            <div className="flex-1 overflow-y-auto px-16 pb-16">
+            <div className="note-editor-mobile note-editor-content flex-1 overflow-y-auto px-4 md:px-16 pb-16">
                 <div className="prose dark:prose-invert max-w-[680px]">
                     <ReactMarkdown remarkPlugins={[remarkGfm]}>
                         {activePost.content}
@@ -64,3 +67,4 @@ export function NoteEditor({ posts }: NoteEditorProps) {
         </div>
     );
 }
+

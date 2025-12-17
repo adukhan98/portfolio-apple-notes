@@ -3,17 +3,21 @@
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Post } from '@/lib/posts';
+import { useMemo } from 'react';
 
 interface NoteListProps {
     posts: Post[];
+    onNoteSelect?: () => void;
 }
 
-export function NoteList({ posts }: NoteListProps) {
+export function NoteList({ posts, onNoteSelect }: NoteListProps) {
     const searchParams = useSearchParams();
     const currentNoteSlug = searchParams.get('note');
 
     const filteredPosts = posts;
-    const groupedPosts = groupPostsByDate(filteredPosts);
+
+    // Memoize grouped posts to prevent recalculation on every render
+    const groupedPosts = useMemo(() => groupPostsByDate(filteredPosts), [filteredPosts]);
 
     return (
         <div className="w-[340px] h-screen overflow-y-auto shrink-0 border-r"
@@ -37,6 +41,7 @@ export function NoteList({ posts }: NoteListProps) {
                                 href={`/?note=${post.slug}`}
                                 className={`note-item block ${isActive ? 'active' : ''}`}
                                 style={{ borderColor: 'var(--border-color)' }}
+                                onClick={onNoteSelect}
                             >
                                 <div className="note-item-title">
                                     {post.title}
