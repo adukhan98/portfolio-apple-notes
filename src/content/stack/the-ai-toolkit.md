@@ -1,34 +1,69 @@
 ---
-title: the ai toolkit
+title: skills
 folder: stack
 is_pinned: true
 updated_at: '2025-12-15T21:30:00.000Z'
-slug: ai-toolkit
+slug: skills
 ---
 
 # 🧠 Skills & Systems I Leverage
 
 My stack is built around modern AI development and robust product management.
 
-## AI / Agent Systems
+## programming
 
-* Agentic Workflows & Multi-Agent Orchestration
-* Context Engineering & Prompt Engineering (50+ templates deployed)
-* RAG Implementation & LLM Evaluation
+- python
+- sql
+- linux
 
-## AI Developer Tools
+## frontend and backend
 
-* **Coding & Deployment:** Cursor, Claude Code, Codex, Replit
-* **Prototyping:** Vercel v0, Lovable, Google Antigravity
+- vercel v0
+- ui prototyping
+- python apis
+- data services
+- json schema design
 
-## Product Management
+## ai and agent systems
 
-* Product Roadmap Development & Strategy
-* User Research and Feature Prioritization (Achieved 30% KPI improvement)
-* Agile Methodologies, Sprint Planning, Stakeholder Management
+- agentic workflows
+- context engineering
+- prompt engineering
+- retrieval-augmented generation (rag)
+- llm evaluation
 
-## Cloud & Infrastructure
+## developer productivity and tools
 
-* AWS (Bedrock, Lambda, S3, EC2)
-* Azure (AI-900), OCI
-* Python, SQL, Linux, Docker
+- github actions
+- jira
+- confluence
+- miro
+- mural
+
+## ai developer tools
+
+- cursor
+- claude code
+- codex
+- vercel v0
+- lovable
+- replit
+- google antigravity
+
+## cloud and infrastructure
+
+- azure
+- aws (bedrock, lambda, ec2, s3)
+- oracle cloud infrastructure
+- docker
+
+## product
+
+- product roadmaps
+- user research
+- feature prioritization
+- stakeholder management
+- agile delivery
+- product strategy
+- cross-functional collaboration
+- sprint planning
